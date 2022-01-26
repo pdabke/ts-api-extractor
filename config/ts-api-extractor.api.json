@@ -1195,8 +1195,9 @@
                   "text": "package: "
                 },
                 {
-                  "kind": "Content",
-                  "text": "string"
+                  "kind": "Reference",
+                  "text": "APIPackage",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIPackage:class"
                 },
                 {
                   "kind": "Content",
@@ -1481,6 +1482,76 @@
               "isOptional": false,
               "releaseTag": "Public",
               "name": "returnType",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIPackage:class",
+          "docComment": "/**\n * Package information\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIPackage "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIPackage",
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIPackage#name:member",
+              "docComment": "/**\n * Package name\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIPackage#version:member",
+              "docComment": "/**\n * Package version\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "version: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "version",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -2024,8 +2095,35 @@
             },
             {
               "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APITypeAlias#isAllLiterals:member",
+              "docComment": "/**\n * Flag indicates that this type alias corresponds to one or more literals\n *\n * @example\n *\n * type OneTwoThree 1 | 2 | 3\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isAllLiterals?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isAllLiterals",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
               "canonicalReference": "@nabh/ts-api-extractor!APITypeAlias#types:member",
-              "docComment": "",
+              "docComment": "/**\n * One or more source types or literals for this alias\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2047,7 +2145,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ">"
+                  "text": " | string>"
                 },
                 {
                   "kind": "Content",

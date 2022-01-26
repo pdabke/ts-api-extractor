@@ -1,45 +1,112 @@
 # ts-api-extractor
-`ts-api-extractor` constructs structured metadata corresponding to the type 
-signatures defined in a package. For the given package, it looks up the "types"
-value from the `package.json` file at the root of the package directory. It
-then extracts the signatures of all exported types from the Typescript 
-definition files. The metadata can be used for a variety of use cases including
-automated CLI creation, aspect oriented programming, and API documentation.
+`ts-api-extractor` is a utility for extracting type information exported by a Typescript library. The extracted type metadata can be used for a variety of use cases including automated CLI creation, aspect oriented programming and API documentation. `ts-api-extractor` provides a command line tool in addition to supporting programmatic creation of API model metadata.
 ## Usage
 Install globally or locally
 ```
-npm i [-g] @nabh/create-index-ts
+npm i [-g] @nabh/ts-api-extractor
 ```
 ### Command Line Usage
-`ts-api-extractor` provides a script called `extractapi` for generating the API
-metadata objects. If you install `ts-api-extractor` globally, you can use the
-script on the command line as shown below. 
-
-> Note: You must invoke the command from a directory that allows node to find 
-> the input package.
+If you install `ts-api-extractor` globally, you can use the command line tool as shown below.
 ```
 # Use if you want to print metadata definitions to the console
-> extractapi "<package-name>"
+> ts_api_extractor [-out <output-file-path>] [<package-name> | <package-root-dir>]
 
-# Write metadata definitions to a file
-> extractapi "<package-name>" <file-name>
 ```
 ### Programmatic Usage
 You can also install `ts-api-extractor` locally and use it in your Javascript code.
 ```javascript
-const APIExtractor = require("ts-api-extractor");
-const apiDefs = APIExtractor("test_package");
+const APIExtractor = require("@nabh/ts-api-extractor");
+const apiDefs = APIExtractor.extract("test_package");
 
 // Print API metadata object
 console.log(JSON.stringify(apiDefs, null, 2));
 ```
+## How Does It Work?
+`ts-api-extractor` reads the `package.json` file for the input Typescript package as a starting point. You can either directly specify the package root folder or specify the package name. If you provide the package name, `ts-api-extractor` attempts to find the package installation directory by recursively searching current and parent directories for `node_modules/\<package\>` folder. Once it is able to locate the `package.json` file, it uses the `types` field as the source of Typescript type definitions. 
+
+The exported types are transformed into an hierarchy of metadata objects starting from an instance of class `APIMetadata`. Please see https://pdabke.github.io/ts-api-extractor/ts-api-extractor.html for full specification of the metadata schema. As an example, see the serialized JSON object that represents types exported by a test package.
 
 ```json
-
+// JSON produced by serializing instance of APIMetadata object
+{
+  "package": {
+    "name": "test_package",
+    "version": "1.0.0"
+  },
+  "metadata": {
+    "alphanumeric": {
+      "name": "alphanumeric",
+      "kind": "type-alias",
+      "comment": "A type that can be either a string or a number",
+      "types": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        }
+      ]
+    },
+    "DocBaseClass": {
+      "name": "DocBaseClass",
+      "kind": "class",
+      "comment": "Example base class",
+      "constructors": [
+        {
+          "name": "constructor",
+          "comment": "The simple constructor for <code>DocBaseClass</code>",
+          "params": []
+        },
+        {
+          "name": "constructor",
+          "comment": "The overloaded constructor for <code>DocBaseClass</code>",
+          "params": [
+            {
+              "name": "x",
+              "type": "number"
+            }
+          ]
+        }
+      ],
+      "methods": [],
+      "properties": [],
+      "implements": []
+    },
+    "Fruits": {
+      "name": "Fruits",
+      "kind": "enum",
+      "members": [
+        {
+          "key": "BANANA",
+          "comment": "Subject",
+          "value": "\"Banana\""
+        },
+        {
+          "key": "MANGO",
+          "comment": "King of fruits",
+          "value": "\"Mango\""
+        }
+      ]
+    },
+    "IDocInterface1": {
+      "name": "IDocInterface1",
+      "kind": "interface",
+      "comment": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "regularProperty",
+          "type": "SystemEvent",
+          "package": "test_package",
+          "comment": "Does something"
+        }
+      ]
+    }
+ }
 ```
 
-### Enumerations
-#### Source
+## Enumeration
+### Source
 ```typescript
 export enum Fruits {
   /**
@@ -56,29 +123,68 @@ export enum Fruits {
 ### Generated Metadata 
 ```json
 {
-  "name": "Fruits",
-  "members": [
-    {
-      "key": "BANANA",
-      "comment": "Subject",
-      "value": "\"Banana\""
-    },
-    {
-      "key": "MANGO",
-      "comment": "King of fruits",
-      "value": "\"Mango\""
-    }
-  ],
-  "kind": "enum"
-
+  "Fruits": {
+    "name": "Fruits",
+    "members": [
+      {
+        "key": "BANANA",
+        "comment": "Subject",
+        "value": "\"Banana\""
+      },
+      {
+        "key": "MANGO",
+        "comment": "King of fruits",
+        "value": "\"Mango\""
+      }
+    ],
+    "kind": "enum"
+  }
 }
 ```
-## Classes
+## Type Aliase
 ### Source
 ```typescript
 /**
- * This is an example class.
+ * Type that maps to another type
  */
+export type targetType = TypeAliasSource
+
+/**
+ * Type alias with string literals
+ */
+export type threeNumberStrings = "one" | "two" | "three";
+
+```
+### Generated Metata
+```json
+{
+    "targetType": {
+      "name": "targetType",
+      "kind": "type-alias",
+      "comment": "Type that maps to another type",
+      "types": [
+        {
+          "type": "TypeAliasSource",
+          "package": "test_package"
+        }
+      ]
+    },
+    "threeNumberStrings": {
+      "name": "threeNumberStrings",
+      "kind": "type-alias",
+      "comment": "Type alias with string literals",
+      "types": [
+        "\"one\"",
+        "\"two\"",
+        "\"three\""
+      ],
+      "isAllLiterals": true
+    }
+}
+```
+## Class
+### Source
+```typescript
 export class DocClass1 extends DocBaseClass implements IDocInterface1, IDocInterface2 {
   /**
    * An internal class constructor.
@@ -86,22 +192,6 @@ export class DocClass1 extends DocBaseClass implements IDocInterface1, IDocInter
    */
   public constructor(name: string) {
     super();
-  }
-
-  /**
-   * This is an overloaded function.
-   * @param a - the first string
-   * @param b - the second string
-   *
-   * @throws `Error`
-   *  The first throws line
-   *
-   * @throws The second throws line
-   */
-  exampleFunction(a: string, b: string): string;
-
-  public exampleFunction(x: number | string, y?: string): string | number {
-    return x;
   }
 
   public get readonlyProperty(): string {
@@ -114,26 +204,9 @@ export class DocClass1 extends DocBaseClass implements IDocInterface1, IDocInter
   public set writeableProperty(value: string) {}
 
   /**
-   * This event is fired whenever the object is modified.
-   * @eventProperty
-   */
-  public readonly modifiedEvent: SystemEvent;
-
-  /**
-   * This event should have been marked as readonly.
-   * @eventProperty
-   */
-  public malformedEvent: SystemEvent;
-
-  /**
    * This is a regular property that happens to use the SystemEvent type.
    */
   public regularProperty: SystemEvent;
-
-  /**
-   * @deprecated Use `otherThing()` instead.
-   */
-  public deprecatedExample(): void {}
 
   /**
    * Returns the sum of two numbers.
@@ -145,6 +218,18 @@ export class DocClass1 extends DocBaseClass implements IDocInterface1, IDocInter
    * @param y - the second number to add
    * @returns the sum of the two numbers
    *
+   * @example
+   * Here's a simple example:
+   * ```
+   * // Prints "2":
+   * console.log(DocClass1.sumWithExample(1,1));
+   * ```
+   * @example
+   * Here's an example with negative numbers:
+   * ```
+   * // Prints "0":
+   * console.log(DocClass1.sumWithExample(1,-1));
+   * ```
    */
   public static sumWithExample(x: number, y: number): number {
     return x + y;
@@ -154,54 +239,12 @@ export class DocClass1 extends DocBaseClass implements IDocInterface1, IDocInter
 ### Generated Metadata
 ```json
 {
+  "DocClass1": {
     "name": "DocClass1",
+    "kind": "class",
     "comment": "This is an example class.",
     "constructors": [],
     "methods": [
-      {
-        "name": "deprecatedExample",
-        "isDeprecated": {
-          "comment": " Use <code>otherThing()</code> instead."
-        },
-        "returns": {
-          "type": "void"
-        },
-        "comment": "",
-        "params": []
-      },
-      {
-        "name": "exampleFunction",
-        "returns": {
-          "type": "string"
-        },
-        "comment": "This is an overloaded function.",
-        "params": [
-          {
-            "name": "a",
-            "type": "string",
-            "comment": "the first string"
-          },
-          {
-            "name": "b",
-            "type": "string",
-            "comment": "the second string"
-          }
-        ]
-      },
-      {
-        "name": "exampleFunction",
-        "returns": {
-          "type": "number"
-        },
-        "comment": "This is also an overloaded function.",
-        "params": [
-          {
-            "name": "x",
-            "type": "number",
-            "comment": "the number"
-          }
-        ]
-      },
       {
         "name": "sumWithExample",
         "isStatic": true,
@@ -225,19 +268,6 @@ export class DocClass1 extends DocBaseClass implements IDocInterface1, IDocInter
       }
     ],
     "properties": [
-      {
-        "name": "malformedEvent",
-        "type": "SystemEvent",
-        "package": "test_package",
-        "comment": "This event should have been marked as readonly."
-      },
-      {
-        "name": "modifiedEvent",
-        "type": "SystemEvent",
-        "isReadOnly": true,
-        "package": "test_package",
-        "comment": "This event is fired whenever the object is modified."
-      },
       {
         "name": "readonlyProperty",
         "type": "string",
@@ -267,8 +297,78 @@ export class DocClass1 extends DocBaseClass implements IDocInterface1, IDocInter
         "type": "IDocInterface2",
         "package": "test_package"
       }
-    ],
-    "kind": "class"
+    ]
   }
+}
+
 ```
-## Type Aliases
+## Interface
+### Source
+```typescript
+/**
+ * @public
+ * {@docCategory DocBaseClass}
+ */
+export interface IDocInterface1 {
+  /**
+   * Does something
+   */
+  regularProperty: SystemEvent;
+}
+
+/**
+ * @public
+ * {@docCategory DocBaseClass}
+ * @deprecated
+ */
+export interface IDocInterface2 extends IDocInterface1 {
+  /**
+   * @deprecated Use `otherThing()` instead.
+   */
+  deprecatedExample(): void;
+}
+
+```
+### Generated Metadata
+```json
+{
+    "IDocInterface1": {
+      "name": "IDocInterface1",
+      "kind": "interface",
+      "comment": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "regularProperty",
+          "type": "SystemEvent",
+          "package": "test_package",
+          "comment": "Does something"
+        }
+      ]
+    },
+    "IDocInterface2": {
+      "name": "IDocInterface2",
+      "kind": "interface",
+      "isDeprecated": true,
+      "extends": [
+        {
+          "type": "IDocInterface1",
+          "package": "test_package"
+        }
+      ],
+      "comment": "",
+      "methods": [
+        {
+          "name": "deprecatedExample",
+          "isDeprecated": " Use <code>otherThing()</code> instead.",
+          "returns": {
+            "type": "void"
+          },
+          "comment": "",
+          "params": []
+        }
+      ],
+      "properties": []
+    }
+}
+```

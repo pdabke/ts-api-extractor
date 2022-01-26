@@ -16,6 +16,7 @@
 |  [APIInterface](./ts-api-extractor.apiinterface.md) | Describes Typescript <code>class</code> public signature |
 |  [APIMetadata](./ts-api-extractor.apimetadata.md) | Encapsulates package types metadata |
 |  [APIMethod](./ts-api-extractor.apimethod.md) | Class or interface method |
+|  [APIPackage](./ts-api-extractor.apipackage.md) | Package information |
 |  [APIParam](./ts-api-extractor.apiparam.md) | Class or interface property |
 |  [APIProperty](./ts-api-extractor.apiproperty.md) | Class or interface property |
 |  [APIType](./ts-api-extractor.apitype.md) | Qualified type reference that specifies the object type and package it is exported by |

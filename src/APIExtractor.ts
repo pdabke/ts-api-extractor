@@ -150,18 +150,37 @@ function extractTypeAlias(item) {
   const ta = new APITypeAlias(item.displayName);
   setComment(ta, item);
   const types = [];
-  for (const t of item.typeExcerpt.spannedTokens) {
-    types.push(getTypeInfo(t));
+  for (let index = item.typeExcerpt.tokenRange.startIndex; index < item.typeExcerpt.tokenRange.endIndex+1; index++) {
+    let typeInfo = getTypeInfo(item.typeExcerpt.tokens[index]);
+    if (typeInfo) {
+      if (Array.isArray(typeInfo)) {
+        for (const ty of typeInfo) types.push(ty);
+      } else types.push(typeInfo);
+    }
   }
   ta.types = types;
+  let allLiterals = true;
+  for (const ty of ta.types) if ((typeof ty ) != "string") allLiterals = false;
+  if (allLiterals) ta.isAllLiterals = true;
   return ta;
 }
 
 function getTypeInfo(excerptToken) {
+  let txt = excerptToken.text.trim();
+  if (txt == ";") return undefined;
   if (excerptToken.kind == "Content") {
-    return { type: excerptToken.text.replace("|", "").trim() };
+    let tArray = txt.split("|");
+    let retArray = [];
+    for (const ta of tArray) {
+      let ta2 = ta.trim();
+      if (!ta2) continue;
+      if (ta2 == "true" || ta2 == "false" || ta2.startsWith("'") || ta2.startsWith('"') ||
+      /^\d+$/.test(ta2)) retArray.push(ta2);
+      else retArray.push({ type: ta2});
+    }
+    return retArray;
   } else {
-    return { type: excerptToken.text.replace("|", "").trim(),
+    return { type: txt.replace("|", "").trim(),
       package: excerptToken.canonicalReference.source.escapedPath};
   }
 }

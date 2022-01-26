@@ -4,8 +4,10 @@
 
 ## APITypeAlias.types property
 
+One or more source types or literals for this alias
+
 <b>Signature:</b>
 
 ```typescript
-types: Array<APIType>;
+types: Array<APIType | string>;
 ```

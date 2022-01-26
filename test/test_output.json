@@ -471,6 +471,27 @@
         }
       ]
     },
+    "threeNumbers": {
+      "name": "threeNumbers",
+      "kind": "type-alias",
+      "types": [
+        "1",
+        "2",
+        "3"
+      ],
+      "isAllLiterals": true
+    },
+    "threeNumberStrings": {
+      "name": "threeNumberStrings",
+      "kind": "type-alias",
+      "comment": "Type alias with string literals",
+      "types": [
+        "\"one\"",
+        "\"two\"",
+        "\"three\""
+      ],
+      "isAllLiterals": true
+    },
     "TypeAliasSource": {
       "name": "TypeAliasSource",
       "kind": "class",

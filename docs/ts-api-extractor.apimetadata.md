@@ -17,5 +17,5 @@ export declare class APIMetadata
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [metadata](./ts-api-extractor.apimetadata.metadata.md) |  | Map&lt;string, [APIEntity](./ts-api-extractor.apientity.md)<!-- -->&gt; | Map from type name to type metadata |
-|  [package](./ts-api-extractor.apimetadata.package.md) |  | string | Package name |
+|  [package](./ts-api-extractor.apimetadata.package.md) |  | [APIPackage](./ts-api-extractor.apipackage.md) | Package name |
 

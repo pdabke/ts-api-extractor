@@ -9,5 +9,5 @@ Package name
 <b>Signature:</b>
 
 ```typescript
-package: string;
+package: APIPackage;
 ```

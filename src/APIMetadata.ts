@@ -2,6 +2,7 @@ import { APIEntity } from "./APIEntity";
 
 /**
  * Package information
+ * @public
  */
 export class APIPackage {
   /**

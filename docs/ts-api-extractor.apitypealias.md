@@ -23,5 +23,6 @@ export declare class APITypeAlias extends APIEntity
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [types](./ts-api-extractor.apitypealias.types.md) |  | Array&lt;[APIType](./ts-api-extractor.apitype.md)<!-- -->&gt; |  |
+|  [isAllLiterals?](./ts-api-extractor.apitypealias.isallliterals.md) |  | boolean | <i>(Optional)</i> Flag indicates that this type alias corresponds to one or more literals |
+|  [types](./ts-api-extractor.apitypealias.types.md) |  | Array&lt;[APIType](./ts-api-extractor.apitype.md) \| string&gt; | One or more source types or literals for this alias |
 

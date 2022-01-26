@@ -9,8 +9,8 @@
     "ts_api_extractor": "bin/ts_api_extractor.js"
   },
   "scripts": {
-    "run:extractor": "api-extractor run --local --verbose",
-    "build": "npm run clean && create_index_ts src && npm run build:cjs && npm run build:es && npm run build:types && npm run build:docs",
+    "extract": "api-extractor run --local --verbose",
+    "build": "npm run clean && create_index_ts src && npm run build:cjs && npm run build:es && npm run build:types && npm run extract && npm run build:docs",
     "build:cjs": "tsc -p tsconfig.json",
     "build:es": "tsc -p tsconfig.es.json",
     "build:types": "tsc -p tsconfig.types.json",
@@ -48,7 +48,6 @@
     "@typescript-eslint/parser": "^5.10.1",
     "eslint": "^8.7.0",
     "jest": "^27.4.7",
-    "rimraf": "^3.0.2",
-    "typedoc": "^0.22.11"
+    "rimraf": "^3.0.2"
   }
 }
