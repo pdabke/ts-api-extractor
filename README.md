@@ -1,4 +1,4 @@
-# ts-api-extractor
+# @nabh/ts-api-extractor
 `ts-api-extractor` is a utility for extracting type information exported by a Typescript library. The extracted type metadata can be used for a variety of use cases including automated CLI creation, aspect oriented programming and API documentation. `ts-api-extractor` provides a command line tool in addition to supporting programmatic creation of API model metadata.
 ## Usage
 Install globally or locally
