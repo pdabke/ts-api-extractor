@@ -1,0 +1,14 @@
+{
+  "name": "test_package",
+  "version": "1.0.0",
+  "description": "Package for testing API Extractor",
+  "main": "./dist/dist-cjs/index.js",
+  "types": "./dist/dist-types/index.d.ts",
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:types",
+    "build:cjs": "tsc -p tsconfig.json",
+    "build:types": "tsc -p tsconfig.types.json"
+  },
+  "author": "Padmanabh Dabke",
+  "license": "MIT"
+}

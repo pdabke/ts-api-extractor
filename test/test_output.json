@@ -1,0 +1,488 @@
+{
+  "package": {
+    "name": "test_package",
+    "version": "1.0.0"
+  },
+  "metadata": {
+    "alphanumeric": {
+      "name": "alphanumeric",
+      "kind": "type-alias",
+      "comment": "A type that can be either a string or a number",
+      "types": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "TypeAliasSource",
+          "package": "test_package"
+        },
+        {
+          "type": "number"
+        }
+      ]
+    },
+    "DocBaseClass": {
+      "name": "DocBaseClass",
+      "kind": "class",
+      "comment": "Example base class",
+      "constructors": [
+        {
+          "name": "constructor",
+          "comment": "The simple constructor for <code>DocBaseClass</code>",
+          "params": []
+        },
+        {
+          "name": "constructor",
+          "comment": "The overloaded constructor for <code>DocBaseClass</code>",
+          "params": [
+            {
+              "name": "x",
+              "type": "number"
+            }
+          ]
+        }
+      ],
+      "methods": [],
+      "properties": [],
+      "implements": []
+    },
+    "DocClass1": {
+      "name": "DocClass1",
+      "kind": "class",
+      "comment": "This is an example class.",
+      "constructors": [],
+      "methods": [
+        {
+          "name": "deprecatedExample",
+          "isDeprecated": " Use <code>otherThing()</code> instead.",
+          "returns": {
+            "type": "void"
+          },
+          "comment": "",
+          "params": []
+        },
+        {
+          "name": "exampleFunction",
+          "returns": {
+            "type": "string"
+          },
+          "comment": "This is an overloaded function.",
+          "params": [
+            {
+              "name": "a",
+              "type": "string",
+              "comment": "the first string"
+            },
+            {
+              "name": "b",
+              "type": "string",
+              "comment": "the second string"
+            }
+          ]
+        },
+        {
+          "name": "exampleFunction",
+          "returns": {
+            "type": "number"
+          },
+          "comment": "This is also an overloaded function.",
+          "params": [
+            {
+              "name": "x",
+              "type": "number",
+              "comment": "the number"
+            }
+          ]
+        },
+        {
+          "name": "interestingEdgeCases",
+          "returns": {
+            "type": "void"
+          },
+          "comment": "Example: \" \"maxItemsToShow\": 123 \"The regular expression used to validate the constraints is /^[a-zA-Z0-9-_]+$/",
+          "params": []
+        },
+        {
+          "name": "sumWithExample",
+          "isStatic": true,
+          "returns": {
+            "type": "number",
+            "comment": " the sum of the two numbers"
+          },
+          "comment": "Returns the sum of two numbers.",
+          "params": [
+            {
+              "name": "x",
+              "type": "number",
+              "comment": "the first number to add"
+            },
+            {
+              "name": "y",
+              "type": "number",
+              "comment": "the second number to add"
+            }
+          ]
+        },
+        {
+          "name": "tableExample",
+          "returns": {
+            "type": "void"
+          },
+          "comment": "An example with tables:",
+          "params": []
+        }
+      ],
+      "properties": [
+        {
+          "name": "malformedEvent",
+          "type": "SystemEvent",
+          "package": "test_package",
+          "comment": "This event should have been marked as readonly."
+        },
+        {
+          "name": "modifiedEvent",
+          "type": "SystemEvent",
+          "isReadOnly": true,
+          "package": "test_package",
+          "comment": "This event is fired whenever the object is modified."
+        },
+        {
+          "name": "readonlyProperty",
+          "type": "string",
+          "isReadOnly": true
+        },
+        {
+          "name": "regularProperty",
+          "type": "SystemEvent",
+          "package": "test_package",
+          "comment": "This is a regular property that happens to use the SystemEvent type."
+        },
+        {
+          "name": "writeableProperty",
+          "type": "string"
+        }
+      ],
+      "extends": {
+        "package": "test_package",
+        "type": "DocBaseClass"
+      },
+      "implements": [
+        {
+          "type": "IDocInterface1",
+          "package": "test_package"
+        },
+        {
+          "type": "IDocInterface2",
+          "package": "test_package"
+        }
+      ]
+    },
+    "DocClassInterfaceMerge": {
+      "name": "DocClassInterfaceMerge",
+      "kind": "interface",
+      "comment": "Interface that merges with class",
+      "methods": [],
+      "properties": []
+    },
+    "DocEnum": {
+      "name": "DocEnum",
+      "kind": "enum",
+      "comment": "Docs for DocEnum",
+      "members": [
+        {
+          "key": "One",
+          "comment": "These are some docs for One",
+          "value": "1"
+        },
+        {
+          "key": "Two",
+          "comment": "These are some docs for Two. is a direct link to another enum member.",
+          "value": "2"
+        },
+        {
+          "key": "Zero",
+          "comment": "These are some docs for Zero",
+          "value": "0"
+        }
+      ]
+    },
+    "DocEnumNamespaceMerge": {
+      "name": "DocEnumNamespaceMerge",
+      "kind": "enum",
+      "comment": "Enum that merges with namespace",
+      "members": [
+        {
+          "key": "Left",
+          "comment": "These are some docs for Left",
+          "value": "0"
+        },
+        {
+          "key": "Right",
+          "comment": "These are some docs for Right",
+          "value": "1"
+        }
+      ]
+    },
+    "Fruits": {
+      "name": "Fruits",
+      "kind": "enum",
+      "members": [
+        {
+          "key": "BANANA",
+          "comment": "Subject",
+          "value": "\"Banana\""
+        },
+        {
+          "key": "MANGO",
+          "comment": "King of fruits",
+          "value": "\"Mango\""
+        }
+      ]
+    },
+    "Generic": {
+      "name": "Generic",
+      "kind": "class",
+      "comment": "Generic class.",
+      "constructors": [],
+      "methods": [],
+      "properties": [],
+      "implements": []
+    },
+    "IDocInterface1": {
+      "name": "IDocInterface1",
+      "kind": "interface",
+      "comment": "",
+      "methods": [],
+      "properties": [
+        {
+          "name": "regularProperty",
+          "type": "SystemEvent",
+          "package": "test_package",
+          "comment": "Does something"
+        }
+      ]
+    },
+    "IDocInterface2": {
+      "name": "IDocInterface2",
+      "kind": "interface",
+      "isDeprecated": true,
+      "extends": [
+        {
+          "type": "IDocInterface1",
+          "package": "test_package"
+        }
+      ],
+      "comment": "",
+      "methods": [
+        {
+          "name": "deprecatedExample",
+          "isDeprecated": " Use <code>otherThing()</code> instead.",
+          "returns": {
+            "type": "void"
+          },
+          "comment": "",
+          "params": []
+        }
+      ],
+      "properties": []
+    },
+    "IDocInterface3": {
+      "name": "IDocInterface3",
+      "kind": "interface",
+      "comment": "Some less common TypeScript declaration kinds.",
+      "methods": [],
+      "properties": [
+        {
+          "name": "\"[not.a.symbol]\"",
+          "type": "string",
+          "comment": "An identifier that does need quotes.  It misleadingly looks like an ECMAScript symbol."
+        },
+        {
+          "name": "[EcmaSmbols.example]",
+          "type": "string",
+          "comment": "ECMAScript symbol"
+        },
+        {
+          "name": "redundantQuotes",
+          "type": "string",
+          "comment": "A quoted identifier with redundant quotes."
+        }
+      ]
+    },
+    "IDocInterface4": {
+      "name": "IDocInterface4",
+      "kind": "interface",
+      "comment": "Type union in an interface.",
+      "methods": [],
+      "properties": [
+        {
+          "name": "Context",
+          "type": "({ children }: {\n        children: string;\n    }) => boolean",
+          "comment": "Test newline rendering when code blocks are used in tables"
+        },
+        {
+          "name": "generic",
+          "type": "Generic<number>",
+          "package": "test_package",
+          "comment": "make sure html entities are escaped in tables."
+        },
+        {
+          "name": "numberOrFunction",
+          "type": "number | (() => number)",
+          "comment": "a union type with a function"
+        },
+        {
+          "name": "stringOrNumber",
+          "type": "string | number",
+          "comment": "a union type"
+        }
+      ]
+    },
+    "IDocInterface5": {
+      "name": "IDocInterface5",
+      "kind": "interface",
+      "comment": "Interface without inline tag to test custom TOC",
+      "methods": [],
+      "properties": [
+        {
+          "name": "regularProperty",
+          "type": "string",
+          "comment": "Property of type string that does something"
+        }
+      ]
+    },
+    "IDocInterface6": {
+      "name": "IDocInterface6",
+      "kind": "interface",
+      "comment": "Interface without inline tag to test custom TOC with injection",
+      "methods": [
+        {
+          "name": "genericReferenceMethod",
+          "returns": {
+            "type": "T"
+          },
+          "params": [
+            {
+              "name": "x",
+              "type": "T"
+            }
+          ]
+        }
+      ],
+      "properties": [
+        {
+          "name": "arrayProperty",
+          "type": "IDocInterface1[]",
+          "package": "test_package"
+        },
+        {
+          "name": "intersectionProperty",
+          "type": "IDocInterface1 & IDocInterface2",
+          "package": "test_package"
+        },
+        {
+          "name": "regularProperty",
+          "type": "number",
+          "comment": "Property of type number that does something"
+        },
+        {
+          "name": "tupleProperty",
+          "type": "[IDocInterface1, IDocInterface2]"
+        },
+        {
+          "name": "typeReferenceProperty",
+          "type": "Generic<IDocInterface1>",
+          "package": "test_package"
+        },
+        {
+          "name": "unionProperty",
+          "type": "IDocInterface1 | IDocInterface2",
+          "package": "test_package"
+        }
+      ]
+    },
+    "IDocInterface7": {
+      "name": "IDocInterface7",
+      "kind": "interface",
+      "comment": "Interface for testing optional properties",
+      "methods": [
+        {
+          "name": "optionalMember",
+          "returns": {
+            "type": "any"
+          },
+          "comment": "Description of optionalMember",
+          "params": []
+        }
+      ],
+      "properties": [
+        {
+          "name": "optionalField",
+          "isOptional": true,
+          "type": "boolean",
+          "comment": "Description of optionalField"
+        },
+        {
+          "name": "optionalReadonlyField",
+          "isOptional": true,
+          "type": "boolean",
+          "isReadOnly": true,
+          "comment": "Description of optionalReadonlyField"
+        },
+        {
+          "name": "optionalUndocumentedField",
+          "isOptional": true,
+          "type": "boolean"
+        }
+      ]
+    },
+    "SystemEvent": {
+      "name": "SystemEvent",
+      "kind": "class",
+      "isDeprecated": true,
+      "comment": "A class used to exposed events.",
+      "constructors": [],
+      "methods": [
+        {
+          "name": "addHandler",
+          "returns": {
+            "type": "void"
+          },
+          "comment": "Adds an handler for the event.",
+          "params": [
+            {
+              "name": "handler",
+              "type": "() => void"
+            }
+          ]
+        }
+      ],
+      "properties": [],
+      "implements": []
+    },
+    "targetType": {
+      "name": "targetType",
+      "kind": "type-alias",
+      "comment": "Type that maps to another type",
+      "types": [
+        {
+          "type": "TypeAliasSource",
+          "package": "test_package"
+        }
+      ]
+    },
+    "TypeAliasSource": {
+      "name": "TypeAliasSource",
+      "kind": "class",
+      "constructors": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "x",
+          "type": "number"
+        }
+      ],
+      "implements": []
+    }
+  }
+}

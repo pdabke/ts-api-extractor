@@ -1,0 +1,2076 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.19.4",
+    "schemaVersion": 1004,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      }
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@nabh/ts-api-extractor!",
+  "docComment": "",
+  "name": "@nabh/ts-api-extractor",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@nabh/ts-api-extractor!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIClass:class",
+          "docComment": "/**\n * Describes Typescript <code>class</code> public signature\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIClass extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "APIEntity",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEntity:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIClass",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@nabh/ts-api-extractor!APIClass:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `APIClass` class\n *\n * @param name - Class name\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIClass#constructors:member",
+              "docComment": "/**\n * Class constructors\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructors: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIMethod",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIMethod:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "constructors",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIClass#extends:member",
+              "docComment": "/**\n * Superclass type reference\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "extends?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIType",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIType:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "extends",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIClass#implements:member",
+              "docComment": "/**\n * Interface type references implemented by this class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "implements?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIType",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIType:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "implements",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIClass#methods:member",
+              "docComment": "/**\n * Class methods\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "methods?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIMethod",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIMethod:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "methods",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIClass#properties:member",
+              "docComment": "/**\n * Class properties\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "properties?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIProperty",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIProperty:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "properties",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIEntity:class",
+          "docComment": "/**\n * Root class for all API metadata objects that defines common properties\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIEntity "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIEntity",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEntity:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `APIEntity` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", kind: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIKind",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIKind:enum"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "kind",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEntity#comment:member",
+              "docComment": "/**\n * Summary part of the TSDoc comment for the object\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "comment?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "comment",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEntity#isDeprecated:member",
+              "docComment": "/**\n * Is this type deprecated. <code>string</code> value specifies TSDoc comment for at-deprecated tag\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isDeprecated?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean | string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isDeprecated",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEntity#kind:member",
+              "docComment": "/**\n * Kind of API object\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "kind: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIKind",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIKind:enum"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "kind",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEntity#name:member",
+              "docComment": "/**\n * Name of the class, interface, type, method, etc.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIEnum:class",
+          "docComment": "/**\n * Describes <code>enum</code> definition\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIEnum extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "APIEntity",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEntity:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIEnum",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEnum:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `APIEnum` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEnum#members:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "members: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIEnumMember",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIEnumMember:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "members",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIEnumMember:class",
+          "docComment": "/**\n * <code>enum</code> member\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIEnumMember "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIEnumMember",
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEnumMember#comment:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "comment?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "comment",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEnumMember#key:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "key",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEnumMember#value:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "value: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "value",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIExtractor:class",
+          "docComment": "/**\n * Main class that provides methods for extracting API metadata\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIExtractor "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIExtractor",
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "@nabh/ts-api-extractor!APIExtractor.extract:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static extract(pkg: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIMetadata",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIMetadata:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "pkg",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ],
+              "name": "extract"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIInterface:class",
+          "docComment": "/**\n * Describes Typescript <code>class</code> public signature\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIInterface extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "APIEntity",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEntity:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIInterface",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@nabh/ts-api-extractor!APIInterface:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `APIInterface` class\n *\n * @param name - Class name\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIInterface#extends:member",
+              "docComment": "/**\n * Interface type references extended by this <code>interface</code>\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "extends?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIType",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIType:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "extends",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIInterface#methods:member",
+              "docComment": "/**\n * Class methods\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "methods?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIMethod",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIMethod:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "methods",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIInterface#properties:member",
+              "docComment": "/**\n * Class properties\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "properties?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIProperty",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIProperty:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "properties",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "@nabh/ts-api-extractor!APIKind:enum",
+          "docComment": "/**\n * Defines possible values for API metadata object \"kind\" property\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum APIKind "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIKind",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@nabh/ts-api-extractor!APIKind.CLASS:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "CLASS = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"class\""
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "CLASS",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@nabh/ts-api-extractor!APIKind.ENUM:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "ENUM = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"enum\""
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "ENUM",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@nabh/ts-api-extractor!APIKind.INTERFACE:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "INTERFACE = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"interface\""
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "INTERFACE",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "@nabh/ts-api-extractor!APIKind.TYPE_ALIAS:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "TYPE_ALIAS = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"type-alias\""
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "TYPE_ALIAS",
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIMetadata:class",
+          "docComment": "/**\n * Encapsulates package types metadata\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIMetadata "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIMetadata",
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMetadata#metadata:member",
+              "docComment": "/**\n * Map from type name to type metadata\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "metadata: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Map",
+                  "canonicalReference": "!Map:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIEntity",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIEntity:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "metadata",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMetadata#package:member",
+              "docComment": "/**\n * Package name\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "package: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "package",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIMethod:class",
+          "docComment": "/**\n * Class or interface method\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIMethod "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIMethod",
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMethod#comment:member",
+              "docComment": "/**\n * Summary section of TSDoc comment on this property\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "comment?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "comment",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMethod#isDeprecated:member",
+              "docComment": "/**\n * Is this type deprecated. <code>string</code> value specifies TSDoc comment for at-deprecated tag\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isDeprecated?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean | string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isDeprecated",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMethod#isOptional:member",
+              "docComment": "/**\n * Is the parameter optional\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isOptional?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isOptional",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMethod#isProtected:member",
+              "docComment": "/**\n * Is this method marked as protected?\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isProtected?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isProtected",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMethod#isStatic:member",
+              "docComment": "/**\n * Is this a static method?\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isStatic?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isStatic",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMethod#name:member",
+              "docComment": "/**\n * Method name\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMethod#params:member",
+              "docComment": "/**\n * Method parameters\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "params: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIParam",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIParam:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "params",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMethod#returns:member",
+              "docComment": "/**\n * Qualified return type\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "returns: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIParam",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIParam:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "returns",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIMethod#returnType:member",
+              "docComment": "/**\n * Method return type\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "returnType: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIType",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIType:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "returnType",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIParam:class",
+          "docComment": "/**\n * Class or interface property\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIParam "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIParam",
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIParam#comment:member",
+              "docComment": "/**\n * Summary section of TSDoc comment on this property\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "comment?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "comment",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIParam#isOptional:member",
+              "docComment": "/**\n * Is the parameter optional\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isOptional?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isOptional",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIParam#name:member",
+              "docComment": "/**\n * Property name\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIParam#package:member",
+              "docComment": "/**\n * Package that exported this property type. Applicable for non-primitive properties\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "package?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "package",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIParam#type:member",
+              "docComment": "/**\n * Property type\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIProperty:class",
+          "docComment": "/**\n * Class or interface property\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIProperty "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIProperty",
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIProperty#comment:member",
+              "docComment": "/**\n * Summary section of TSDoc comment on this property\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "comment?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "comment",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIProperty#isDeprecated:member",
+              "docComment": "/**\n * Is this type deprecated. <code>string</code> value specifies TSDoc comment for at-deprecated tag\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isDeprecated?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean | string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isDeprecated",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIProperty#isOptional:member",
+              "docComment": "/**\n * Is the parameter optional\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isOptional?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isOptional",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIProperty#isProtected:member",
+              "docComment": "/**\n * Is this property marked as protected?\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isProtected?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isProtected",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIProperty#isReadOnly:member",
+              "docComment": "/**\n * Is this property read only?\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isReadOnly?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isReadOnly",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIProperty#isStatic:member",
+              "docComment": "/**\n * Is this a static property?\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "isStatic?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "isStatic",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIProperty#name:member",
+              "docComment": "/**\n * Property name\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIProperty#package:member",
+              "docComment": "/**\n * Package that exported this property type. Applicable for non-primitive properties\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "package?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "package",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIProperty#type:member",
+              "docComment": "/**\n * Property type\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APIType:class",
+          "docComment": "/**\n * Qualified type reference that specifies the object type and package it is exported by\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APIType "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APIType",
+          "members": [
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIType#package:member",
+              "docComment": "/**\n * Package that exports this type\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "package: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "package",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIType#type:member",
+              "docComment": "/**\n * Type name\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "type: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "type",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@nabh/ts-api-extractor!APITypeAlias:class",
+          "docComment": "/**\n * Type alias\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class APITypeAlias extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "APIEntity",
+              "canonicalReference": "@nabh/ts-api-extractor!APIEntity:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "APITypeAlias",
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@nabh/ts-api-extractor!APITypeAlias:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `APITypeAlias` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APITypeAlias#types:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "types: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Array",
+                  "canonicalReference": "!Array:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIType",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIType:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "types",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": []
+        }
+      ]
+    }
+  ]
+}
