@@ -6,11 +6,9 @@ Install globally or locally
 npm i [-g] @nabh/ts-api-extractor
 ```
 ### Command Line Usage
-If you install `ts-api-extractor` globally, you can use the command line tool as shown below.
+If you install `ts-api-extractor` globally, you can use the command line tool as shown below. Invoking the command without any arguments takes the current directory as the package root directory and prints the type information on the console. You can optionally provide the output file path and/or the package name/root directory.
 ```
-# Use if you want to print metadata definitions to the console
-> ts_api_extractor [-out <output-file-path>] [<package-name> | <package-root-dir>]
-
+> ts-api-extractor [-out <output-file-path>] [<package-name> | <package-root-dir>]
 ```
 ### Programmatic Usage
 You can also install `ts-api-extractor` locally and use it in your Javascript code.

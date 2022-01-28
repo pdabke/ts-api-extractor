@@ -28,6 +28,6 @@ if (outputFile) {
 }
 
 function usage() {
-  console.log("Usage: ts_api_extractor [--out <output-file-path>] [package-name]");
+  console.log("Usage: ts-api-extractor [--out <output-file-path>] [package-name]");
   process.exit(-1);
 }
