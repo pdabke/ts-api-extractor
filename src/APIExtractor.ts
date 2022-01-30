@@ -6,7 +6,7 @@ import { MessageRouter } from "@microsoft/api-extractor/lib/collector/MessageRou
 import { Collector } from "@microsoft/api-extractor/lib/collector/Collector";
 import { ApiModelGenerator } from "@microsoft/api-extractor/lib/generators/ApiModelGenerator";
 import { APIMetadata } from "./APIMetaData";
-import { APIClass, APIEntity, APIEnum, APIEnumMember, APIInterface, APIMethod, APIParam, APIProperty, APITypeAlias } from ".";
+import { APIClass, APIEntity, APIEnum, APIEnumMember, APIInterface, APIMethod, APIPackage, APIParam, APIProperty, APITypeAlias } from ".";
 import { ApiConstructor, ApiItemKind, ApiMethod, ApiMethodSignature, ApiPackage, ApiProperty, ApiPropertySignature } from "@microsoft/api-extractor-model";
 import fs from "fs";
 
@@ -15,8 +15,14 @@ import fs from "fs";
  * @public
  */
 export class APIExtractor {
-  static extract(pkg: string) : APIMetadata {
-    const pkgInstallDir = figureOutInstallDir(pkg);
+  /**
+   * 
+   * @param pkg - Name or root directory of the target package
+   * @param basePkg - Used to look up the target package if it is locally installed in the base package
+   * @returns API metadata for the target package
+   */
+  static extract(pkg: string, basePkg?: APIPackage) : APIMetadata {
+    const pkgInstallDir = figureOutInstallDir(pkg, basePkg);
     const md : APIMetadata = new APIMetadata();
     let packageJson = undefined;
     try {
@@ -25,7 +31,7 @@ export class APIExtractor {
     } catch (e) {
       throw new Error("Package root directory does not contain package.json file.");
     }
-    md.package = {name: packageJson.name, version: packageJson.version };
+    md.package = {name: packageJson.name, version: packageJson.version, path: path.resolve(pkgInstallDir) };
     const apiPkg = createAPIPackage(pkgInstallDir, packageJson.name, packageJson.types);
     const entities : Map<string, APIEntity>  = translateAPI(apiPkg);
     md.metadata = entities;
@@ -33,14 +39,14 @@ export class APIExtractor {
   }
 }
 
-function figureOutInstallDir(pkg : string) : string {
+function figureOutInstallDir(pkg : string, basePkg? : APIPackage) : string {
   if (!pkg) return process.cwd();
   if (fs.existsSync(pkg)) {
     if (fs.statSync(pkg).isDirectory()) return pkg;
     else throw new Error("Expected package name or directory path. Found file path.");
   }
   let prev = null;
-  let curr = process.cwd();
+  let curr = basePkg ? basePkg.path : process.cwd();
   let installDir = undefined;
   while (prev != curr && curr) {
     if (fs.existsSync(path.join(curr, "node_modules", pkg))) {
@@ -49,6 +55,15 @@ function figureOutInstallDir(pkg : string) : string {
     }
     prev = curr;
     curr = path.dirname(curr);
+  }
+  if (!installDir && basePkg) {
+    // Check if this is a local package
+    const pkgJson = JSON.parse(fs.readFileSync(path.join(basePkg.path, "package.json"), { encoding: "utf-8"}));
+    const pkgPath = pkgJson.dependencies[pkg];
+    if (pkgPath && pkgPath.startsWith("file:")) {
+      installDir = path.resolve(basePkg.path, pkgPath.substring(5));
+    }
+
   }
   if (!installDir) throw new Error("Could not find install directory for package " + pkg);
   return installDir;
@@ -151,7 +166,7 @@ function extractTypeAlias(item) {
   setComment(ta, item);
   const types = [];
   for (let index = item.typeExcerpt.tokenRange.startIndex; index < item.typeExcerpt.tokenRange.endIndex+1; index++) {
-    let typeInfo = getTypeInfo(item.typeExcerpt.tokens[index]);
+    const typeInfo = getTypeInfo(item.typeExcerpt.tokens[index]);
     if (typeInfo) {
       if (Array.isArray(typeInfo)) {
         for (const ty of typeInfo) types.push(ty);
@@ -166,15 +181,15 @@ function extractTypeAlias(item) {
 }
 
 function getTypeInfo(excerptToken) {
-  let txt = excerptToken.text.trim();
+  const txt = excerptToken.text.trim();
   if (txt == ";") return undefined;
   if (excerptToken.kind == "Content") {
-    let tArray = txt.split("|");
-    let retArray = [];
+    const tArray = txt.split("|");
+    const retArray = [];
     for (const ta of tArray) {
-      let ta2 = ta.trim();
+      const ta2 = ta.trim();
       if (!ta2) continue;
-      if (ta2 == "true" || ta2 == "false" || ta2.startsWith("'") || ta2.startsWith('"') ||
+      if (ta2 == "true" || ta2 == "false" || ta2.startsWith("'") || ta2.startsWith("\"") ||
       /^\d+$/.test(ta2)) retArray.push(ta2);
       else retArray.push({ type: ta2});
     }

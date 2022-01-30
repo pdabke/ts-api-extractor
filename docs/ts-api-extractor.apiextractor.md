@@ -16,5 +16,5 @@ export declare class APIExtractor
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [extract(pkg)](./ts-api-extractor.apiextractor.extract.md) | <code>static</code> |  |
+|  [extract(pkg, basePkg)](./ts-api-extractor.apiextractor.extract.md) | <code>static</code> |  |
 

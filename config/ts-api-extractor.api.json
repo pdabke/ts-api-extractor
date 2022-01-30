@@ -804,7 +804,7 @@
             {
               "kind": "Method",
               "canonicalReference": "@nabh/ts-api-extractor!APIExtractor.extract:member(1)",
-              "docComment": "",
+              "docComment": "/**\n * @param pkg - Name or root directory of the target package\n *\n * @param basePkg - Used to look up the target package if it is locally installed in the base package\n *\n * @returns API metadata for the target package\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -813,6 +813,15 @@
                 {
                   "kind": "Content",
                   "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", basePkg?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "APIPackage",
+                  "canonicalReference": "@nabh/ts-api-extractor!APIPackage:class"
                 },
                 {
                   "kind": "Content",
@@ -831,8 +840,8 @@
               "isOptional": false,
               "isStatic": true,
               "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 4
+                "startIndex": 5,
+                "endIndex": 6
               },
               "releaseTag": "Public",
               "overloadIndex": 1,
@@ -842,6 +851,13 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
+                  }
+                },
+                {
+                  "parameterName": "basePkg",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
                   }
                 }
               ],
@@ -1525,6 +1541,33 @@
               "isOptional": false,
               "releaseTag": "Public",
               "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@nabh/ts-api-extractor!APIPackage#path:member",
+              "docComment": "/**\n * Path where this package was installed\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "path: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "path",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2

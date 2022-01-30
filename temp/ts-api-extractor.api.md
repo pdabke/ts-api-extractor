@@ -43,7 +43,7 @@ export class APIEnumMember {
 // @public
 export class APIExtractor {
     // (undocumented)
-    static extract(pkg: string): APIMetadata;
+    static extract(pkg: string, basePkg?: APIPackage): APIMetadata;
 }
 
 // @public
@@ -88,6 +88,7 @@ export class APIMethod {
 // @public
 export class APIPackage {
     name: string;
+    path: string;
     version: string;
 }
 

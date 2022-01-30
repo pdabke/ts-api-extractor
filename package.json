@@ -1,7 +1,7 @@
 {
   "name": "@nabh/ts-api-extractor",
   "description": "Generates API metadata from Typescript type definitions",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "dist/dist-cjs/index.js",
   "module": "dist/dist-es/index.js",
   "types": "dist/dist-types/index.d.ts",

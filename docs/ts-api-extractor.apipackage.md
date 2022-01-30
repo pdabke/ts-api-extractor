@@ -17,5 +17,6 @@ export declare class APIPackage
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [name](./ts-api-extractor.apipackage.name.md) |  | string | Package name |
+|  [path](./ts-api-extractor.apipackage.path.md) |  | string | Path where this package was installed |
 |  [version](./ts-api-extractor.apipackage.version.md) |  | string | Package version |
 

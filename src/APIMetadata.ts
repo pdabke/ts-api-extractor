@@ -14,6 +14,10 @@ export class APIPackage {
    * Package version
    */
   version: string;
+  /**
+   * Path where this package was installed
+   */
+  path: string;
 }
 
 /**

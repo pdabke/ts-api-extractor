@@ -7,16 +7,19 @@
 <b>Signature:</b>
 
 ```typescript
-static extract(pkg: string): APIMetadata;
+static extract(pkg: string, basePkg?: APIPackage): APIMetadata;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  pkg | string |  |
+|  pkg | string | Name or root directory of the target package |
+|  basePkg | [APIPackage](./ts-api-extractor.apipackage.md) | Used to look up the target package if it is locally installed in the base package |
 
 <b>Returns:</b>
 
 [APIMetadata](./ts-api-extractor.apimetadata.md)
+
+API metadata for the target package
 
