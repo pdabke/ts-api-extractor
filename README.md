@@ -29,7 +29,8 @@ The exported types are transformed into an hierarchy of metadata objects startin
 {
   "package": {
     "name": "test_package",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "path": "/user/test/test_package"
   },
   "metadata": {
     "alphanumeric": {
