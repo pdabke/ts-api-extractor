@@ -103,9 +103,12 @@ The exported types are transformed into an hierarchy of metadata objects startin
     }
  }
 ```
-
-## Enumeration
-### Source
+## Metadata Generation Examples
+`ts-api-extractor` recognizes four types available in Typescript: 
+enum, type (type alias), class, and interface. The following sections 
+provide examples of source/generated metadata for each of these types.
+### Enumeration
+#### Source
 ```typescript
 export enum Fruits {
   /**
@@ -119,7 +122,7 @@ export enum Fruits {
   BANANA = "Banana"
 }
 ```
-### Generated Metadata 
+#### Generated Metadata 
 ```json
 {
   "Fruits": {
@@ -140,8 +143,8 @@ export enum Fruits {
   }
 }
 ```
-## Type Aliase
-### Source
+### Type Alias
+#### Source
 ```typescript
 /**
  * Type that maps to another type
@@ -154,7 +157,7 @@ export type targetType = TypeAliasSource
 export type threeNumberStrings = "one" | "two" | "three";
 
 ```
-### Generated Metata
+#### Generated Metata
 ```json
 {
     "targetType": {
@@ -181,8 +184,8 @@ export type threeNumberStrings = "one" | "two" | "three";
     }
 }
 ```
-## Class
-### Source
+### Class
+#### Source
 ```typescript
 export class DocClass1 extends DocBaseClass implements IDocInterface1, IDocInterface2 {
   /**
@@ -235,7 +238,7 @@ export class DocClass1 extends DocBaseClass implements IDocInterface1, IDocInter
   }
 }
 ```
-### Generated Metadata
+#### Generated Metadata
 ```json
 {
   "DocClass1": {
@@ -301,8 +304,8 @@ export class DocClass1 extends DocBaseClass implements IDocInterface1, IDocInter
 }
 
 ```
-## Interface
-### Source
+### Interface
+#### Source
 ```typescript
 /**
  * @public
@@ -328,7 +331,7 @@ export interface IDocInterface2 extends IDocInterface1 {
 }
 
 ```
-### Generated Metadata
+#### Generated Metadata
 ```json
 {
     "IDocInterface1": {
