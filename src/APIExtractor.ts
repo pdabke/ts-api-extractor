@@ -70,6 +70,7 @@ function figureOutInstallDir(pkg : string, basePkg? : APIPackage) : string {
 }
 
 function createAPIPackage(projectFolder: string, pkgName: string, typeDefPath: string) {
+  if (!pkgName) throw new Error("Package name must be defined.");
   const entryFilePath = path.resolve(projectFolder, typeDefPath);
   const tsConfigPath = path.resolve(projectFolder, "tsconfig.json");
   const apiJsonPath = path.resolve(projectFolder, "config", pkgName + ".json");
