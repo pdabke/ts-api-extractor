@@ -1,7 +1,7 @@
 {
   "name": "@nabh/ts-api-extractor",
   "description": "Generates API metadata from Typescript type definitions",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "dist/dist-cjs/index.js",
   "module": "dist/dist-es/index.js",
   "types": "dist/dist-types/index.d.ts",
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "extract": "api-extractor run --local --verbose",
-    "build": "npm run clean && create_index_ts src && npm run build:cjs && npm run build:es && npm run build:types && npm run extract && npm run build:docs",
+    "build": "npm run clean && index-ts-creator src && npm run build:cjs && npm run build:es && npm run build:types && npm run extract && npm run build:docs",
     "build:cjs": "tsc -p tsconfig.json",
     "build:es": "tsc -p tsconfig.es.json",
     "build:types": "tsc -p tsconfig.types.json",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^7.15.1",
-    "@nabh/index-ts-creator": "^1.0.1",
+    "@nabh/index-ts-creator": "^1.1.0",
     "@types/node": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
