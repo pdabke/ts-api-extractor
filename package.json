@@ -1,7 +1,7 @@
 {
   "name": "@nabh/ts-api-extractor",
   "description": "Generates API metadata from Typescript type definitions",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "main": "dist/dist-cjs/index.js",
   "module": "dist/dist-es/index.js",
   "types": "dist/dist-types/index.d.ts",
@@ -14,7 +14,7 @@
     "build:cjs": "tsc -p tsconfig.json",
     "build:es": "tsc -p tsconfig.es.json",
     "build:types": "tsc -p tsconfig.types.json",
-    "build:docs": "npm run clean:docs && api-documenter markdown --input-folder ./config --output-folder ./docs",
+    "build:docs": "npm run clean:docs && api-extractor run --local --verbose && api-documenter markdown --input-folder ./config --output-folder ./docs",
     "clean": "npm run clean:dist && npm run clean:docs",
     "clean:dist": "rimraf ./dist",
     "clean:docs": "rimraf ./docs",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^7.15.1",
-    "@nabh/index-ts-creator": "^1.1.0",
+    "@nabh/index-ts-creator": "^1.1.2",
     "@types/node": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",

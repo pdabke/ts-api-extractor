@@ -127,6 +127,4 @@ export class APITypeAlias extends APIEntity {
     types: Array<APIType | string>;
 }
 
-// (No @packageDocumentation comment for this package)
-
 ```

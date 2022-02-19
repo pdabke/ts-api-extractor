@@ -1,3 +1,9 @@
+/**
+ * Generates API metadata from Typescript type definitions
+ * @remarks Version 1.1.6
+ *
+ * @packageDocumentation
+ */
 export * from "./APIClass";
 export * from "./APIEntity";
 export * from "./APIEnum";

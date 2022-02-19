@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [@nabh/ts-api-extractor](./ts-api-extractor.md) |  |
+|  [@nabh/ts-api-extractor](./ts-api-extractor.md) | Generates API metadata from Typescript type definitions |
 

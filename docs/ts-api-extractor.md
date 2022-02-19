@@ -4,6 +4,12 @@
 
 ## ts-api-extractor package
 
+Generates API metadata from Typescript type definitions
+
+## Remarks
+
+Version 1.1.6
+
 ## Classes
 
 |  Class | Description |
