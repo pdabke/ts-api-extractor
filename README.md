@@ -1,14 +1,29 @@
 # @nabh/ts-api-extractor
-`ts-api-extractor` is a utility for extracting type information exported by a Typescript library. The extracted type metadata can be used for a variety of use cases including automated CLI creation, aspect oriented programming and API documentation. `ts-api-extractor` provides a command line tool in addition to supporting programmatic creation of API model metadata.
+`ts-api-extractor` is a utility for extracting metadata about the types exported by a Typescript library and creating API documentation. The extracted metadata can be used for a variety of use cases including automated CLI creation, aspect oriented programming and API documentation.
+
+## Alternatives
+`ts-api-extractor` relies on @microsoft/api-documenter, @microsoft/api-extractor, and @microsoft/api-extractor-model for implementing most of the provided functionality. Two key reasons for implementing `ts-api-extractor` package are:
+
+* Metadata objects created by @microsoft/api-extractor package leave some of the metadata properties as "excerptTokens". Details such as parameter types, qualifiers have to be further parsed from the "excerptTokens". `ts-api-extractor` does the parsing for you to create a more fine-grained specification of the API.
+* @microsoft packages are designed around creation of \<your-package\>.api.json files and are not easy to use programmatically. For example, creating documentation via @microsoft/api-documenter requires you to first create the .api.json files all your packages and then invoking the api-documenter tool on the generated files. `ts-api-extractor` combines the two steps in one fileless operation. 
+
+You can consider using @microsft/* packages directly if your use case does not require the additional benefits provided by `ts-api-extractor`.
 ## Usage
 Install globally or locally
 ```
 npm i [-g] @nabh/ts-api-extractor
 ```
 ### Command Line Usage
-If you install `ts-api-extractor` globally, you can use the command line tool as shown below. Invoking the command without any arguments takes the current directory as the package root directory and prints the type information on the console. You can optionally provide the output file path and/or the package name/root directory.
+#### Generating Metadata
+`ts-api-extractor` provides the command `ts-api-extractor` to extract API metadata. If you install it globally, you can invoke the command as shown below.
 ```
-> ts-api-extractor [-out <output-file-path>] [<package-name> | <package-root-dir>]
+> ts-api-extractor [--out <output-file-path>] [<pkg-name-or-dir]
+```
+Invoking the command without any arguments takes the current directory as the package root directory and prints the type information on the console. You can optionally provide the output file path and/or the package name/root directory.
+#### Generating Documentation
+`ts-api-extractor` provides the command `ts-documenter` that can generate Markdown documentation for a list of packages. You can use the command as shown below.
+```shell
+> ts-documenter [--out <output-dir>] <pkg-name-or-dir1> <pkg-name-or-dir2> ...
 ```
 ### Programmatic Usage
 You can also install `ts-api-extractor` locally and use it in your Javascript code.
@@ -18,6 +33,9 @@ const apiDefs = APIExtractor.extract("test_package");
 
 // Print API metadata object
 console.log(JSON.stringify(apiDefs, null, 2));
+
+// Generate Markdown documentation in apidocs directory
+APIExtractor.document(["test_package"], "apidocs")
 ```
 ## How Does It Work?
 `ts-api-extractor` reads the `package.json` file for the input Typescript package as a starting point. You can either directly specify the package root folder or specify the package name. If you provide the package name, `ts-api-extractor` attempts to find the package installation directory by recursively searching current and parent directories for `node_modules/\<package\>` folder. Once it is able to locate the `package.json` file, it uses the `types` field as the source of Typescript type definitions. 
