@@ -9,9 +9,11 @@ beforeAll(() => {
 
 afterAll(() => {
   fs.rmSync(path.resolve(__dirname, "test_package", "dist"), { recursive: true, force: true });
+  fs.rmSync(path.resolve(__dirname, "testdocs"), { recursive: true, force: true });
+
 });
 
-test("Test all classes, interfaces, type aliases, and enumeration in test package", () => {
+test("Test API metadata extraction", () => {
   var api = APIExtractor.extract(path.resolve(__dirname, "test_package"));
   api = JSON.parse(JSON.stringify(api));
   api.package.path = undefined;
@@ -19,3 +21,11 @@ test("Test all classes, interfaces, type aliases, and enumeration in test packag
   expectedOutput.package.path = undefined;
   expect(api).toEqual(expectedOutput);
 });
+
+test("Test API document generation", () => {
+  let docDir = path.resolve(__dirname, "testdocs");
+  APIExtractor.document([path.resolve(__dirname, "test_package")], docDir);
+  expect(fs.existsSync(docDir)).toEqual(true);
+  expect(fs.readdirSync(docDir).length).toEqual(61);
+});
+

@@ -43,6 +43,8 @@ export class APIEnumMember {
 // @public
 export class APIExtractor {
     // (undocumented)
+    static document(packages: string[], outputDir: string): void;
+    // (undocumented)
     static extract(pkg: string, basePkg?: APIPackage): APIMetadata;
 }
 

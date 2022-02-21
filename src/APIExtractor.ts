@@ -7,7 +7,9 @@ import { Collector } from "@microsoft/api-extractor/lib/collector/Collector";
 import { ApiModelGenerator } from "@microsoft/api-extractor/lib/generators/ApiModelGenerator";
 import { APIMetadata } from "./APIMetaData";
 import { APIClass, APIEntity, APIEnum, APIEnumMember, APIInterface, APIMethod, APIPackage, APIParam, APIProperty, APITypeAlias } from ".";
-import { ApiConstructor, ApiItemKind, ApiMethod, ApiMethodSignature, ApiPackage, ApiProperty, ApiPropertySignature } from "@microsoft/api-extractor-model";
+import { ApiConstructor, ApiItemKind, ApiMethod, ApiMethodSignature, ApiModel, ApiPackage, ApiProperty, ApiPropertySignature } from "@microsoft/api-extractor-model";
+import { MarkdownDocumenter } from "@microsoft/api-documenter/lib/documenters/MarkdownDocumenter";
+
 import fs from "fs";
 
 /**
@@ -21,25 +23,44 @@ export class APIExtractor {
    * @param basePkg - Used to look up the target package if it is locally installed in the base package
    * @returns API metadata for the target package
    */
-  static extract(pkg: string, basePkg?: APIPackage) : APIMetadata {
+  static extract(pkg: string, basePkg?: APIPackage): APIMetadata {
     const pkgInstallDir = figureOutInstallDir(pkg, basePkg);
-    const md : APIMetadata = new APIMetadata();
-    let packageJson = undefined;
-    try {
-      packageJson = require(path.resolve(pkgInstallDir, "package.json"));
-      if (!packageJson) throw new Error("Package root directory does not contain package.json file.");
-    } catch (e) {
-      throw new Error("Package root directory does not contain package.json file.");
-    }
-    md.package = {name: packageJson.name, version: packageJson.version, path: path.resolve(pkgInstallDir) };
+    const md: APIMetadata = new APIMetadata();
+    const packageJson = getPackageJson(pkgInstallDir);
+    md.package = { name: packageJson.name, version: packageJson.version, path: path.resolve(pkgInstallDir) };
     const apiPkg = createAPIPackage(pkgInstallDir, packageJson.name, packageJson.types);
-    const entities : Map<string, APIEntity>  = translateAPI(apiPkg);
+    const entities: Map<string, APIEntity> = translateAPI(apiPkg);
     md.metadata = entities;
     return md;
   }
+
+  static document(packages: string[], outputDir: string) {
+    const model = new ApiModel();
+    for (const p of packages) {
+      const pkgInstallDir = figureOutInstallDir(p);
+      const packageJson = getPackageJson(pkgInstallDir);
+      const pkg : ApiPackage = createAPIPackage(pkgInstallDir, packageJson.name, packageJson.types);
+
+      /*
+      * This is a terrible hack but there was no other way of using the underlying 
+      * @microsoft/api-extractor APIs without writing out a json file for each 
+      * package, the very reason we had to build this layer on top.
+      */
+      const pkg2 = pkg as any;
+      pkg2._parent = undefined;
+      model.addMember(pkg2);
+    }
+    const markdownDocumenter: MarkdownDocumenter = new MarkdownDocumenter({
+      apiModel: model,
+      documenterConfig: undefined,
+      outputFolder: outputDir
+    });
+    markdownDocumenter.generateFiles();
+
+  }
 }
 
-function figureOutInstallDir(pkg : string, basePkg? : APIPackage) : string {
+function figureOutInstallDir(pkg: string, basePkg?: APIPackage): string {
   if (!pkg) return process.cwd();
   if (fs.existsSync(pkg)) {
     if (fs.statSync(pkg).isDirectory()) return pkg;
@@ -58,7 +79,7 @@ function figureOutInstallDir(pkg : string, basePkg? : APIPackage) : string {
   }
   if (!installDir && basePkg) {
     // Check if this is a local package
-    const pkgJson = JSON.parse(fs.readFileSync(path.join(basePkg.path, "package.json"), { encoding: "utf-8"}));
+    const pkgJson = JSON.parse(fs.readFileSync(path.join(basePkg.path, "package.json"), { encoding: "utf-8" }));
     const pkgPath = pkgJson.dependencies[pkg];
     if (pkgPath && pkgPath.startsWith("file:")) {
       installDir = path.resolve(basePkg.path, pkgPath.substring(5));
@@ -67,6 +88,17 @@ function figureOutInstallDir(pkg : string, basePkg? : APIPackage) : string {
   }
   if (!installDir) throw new Error("Could not find install directory for package " + pkg);
   return installDir;
+}
+
+function getPackageJson(pkgInstallDir) {
+  try {
+    const p = require(path.resolve(pkgInstallDir, "package.json"));
+    if (p) return p;
+  } catch (e) {
+    throw new Error("Package root directory does not contain package.json file.");
+  }
+  throw new Error("Package root directory does not contain package.json file.");
+
 }
 
 function createAPIPackage(projectFolder: string, pkgName: string, typeDefPath: string) {
@@ -78,10 +110,12 @@ function createAPIPackage(projectFolder: string, pkgName: string, typeDefPath: s
     mainEntryPointFilePath: entryFilePath, projectFolder: projectFolder,
     compiler: { tsconfigFilePath: tsConfigPath }, docModel: { enabled: true, apiJsonFilePath: apiJsonPath }
   };
-  const configOptions = { configObject: configFile, 
-    packageJsonFullPath: path.resolve(projectFolder, "package.json"), configObjectFullPath: "" };
+  const configOptions = {
+    configObject: configFile,
+    packageJsonFullPath: path.resolve(projectFolder, "package.json"), configObjectFullPath: ""
+  };
   // Load and parse the api-extractor.json file
-  const extractorConfig : ExtractorConfig = ExtractorConfig.prepare(configOptions);
+  const extractorConfig: ExtractorConfig = ExtractorConfig.prepare(configOptions);
 
   const messageRouter = new MessageRouter({
     workingPackageFolder: extractorConfig.packageFolder,
@@ -92,9 +126,9 @@ function createAPIPackage(projectFolder: string, pkgName: string, typeDefPath: s
     tsdocConfiguration: extractorConfig.tsdocConfiguration
   });
 
-  const compilerState : CompilerState = CompilerState.create(extractorConfig);
+  const compilerState: CompilerState = CompilerState.create(extractorConfig);
 
-  const program : Program = compilerState.program as Program;
+  const program: Program = compilerState.program as Program;
   const collector = new Collector({
     program: program,
     messageRouter: messageRouter,
@@ -106,8 +140,8 @@ function createAPIPackage(projectFolder: string, pkgName: string, typeDefPath: s
   return modelGen.buildApiPackage();
 }
 
-function translateAPI(apiPackage : ApiPackage) : Map<string, APIEntity> {
-  const types : Map<string, APIEntity>  = new Map<string, APIEntity>();
+function translateAPI(apiPackage: ApiPackage): Map<string, APIEntity> {
+  const types: Map<string, APIEntity> = new Map<string, APIEntity>();
   const entryPoint = apiPackage.members[0];
   let obj = null;
   for (const apiItem of entryPoint.members) {
@@ -166,7 +200,7 @@ function extractTypeAlias(item) {
   const ta = new APITypeAlias(item.displayName);
   setComment(ta, item);
   const types = [];
-  for (let index = item.typeExcerpt.tokenRange.startIndex; index < item.typeExcerpt.tokenRange.endIndex+1; index++) {
+  for (let index = item.typeExcerpt.tokenRange.startIndex; index < item.typeExcerpt.tokenRange.endIndex + 1; index++) {
     const typeInfo = getTypeInfo(item.typeExcerpt.tokens[index]);
     if (typeInfo) {
       if (Array.isArray(typeInfo)) {
@@ -176,7 +210,7 @@ function extractTypeAlias(item) {
   }
   ta.types = types;
   let allLiterals = true;
-  for (const ty of ta.types) if ((typeof ty ) != "string") allLiterals = false;
+  for (const ty of ta.types) if ((typeof ty) != "string") allLiterals = false;
   if (allLiterals) ta.isAllLiterals = true;
   return ta;
 }
@@ -191,13 +225,15 @@ function getTypeInfo(excerptToken) {
       const ta2 = ta.trim();
       if (!ta2) continue;
       if (ta2 == "true" || ta2 == "false" || ta2.startsWith("'") || ta2.startsWith("\"") ||
-      /^\d+$/.test(ta2)) retArray.push(ta2);
-      else retArray.push({ type: ta2});
+        /^\d+$/.test(ta2)) retArray.push(ta2);
+      else retArray.push({ type: ta2 });
     }
     return retArray;
   } else {
-    return { type: txt.replace("|", "").trim(),
-      package: excerptToken.canonicalReference.source.escapedPath};
+    return {
+      type: txt.replace("|", "").trim(),
+      package: excerptToken.canonicalReference.source.escapedPath
+    };
   }
 }
 function extractClass(item) {
@@ -216,7 +252,7 @@ function extractClass(item) {
     }
     info.implements = imps;
   }
-  
+
   for (const m of item.members) {
     if (m instanceof ApiMethod) {
       info.methods.push(extractMethodInfo(m));
@@ -245,7 +281,7 @@ function extractEnum(item) {
   return einfo;
 }
 
-function getText(node, txt? : string) : string {
+function getText(node, txt?: string): string {
   if (!txt) txt = "";
   if (Array.isArray(node)) {
     for (const n of node) {
@@ -275,10 +311,10 @@ function setComment(output, item) {
 
 function setDeprecated(output, input) {
   if (input.tsdocComment?.deprecatedBlock) {
-    const comment : string = getText(input.tsdocComment.deprecatedBlock.content);
-    if ( comment ) output.isDeprecated = comment;
+    const comment: string = getText(input.tsdocComment.deprecatedBlock.content);
+    if (comment) output.isDeprecated = comment;
     else output.isDeprecated = true;
-  } 
+  }
 }
 
 function extractPropertySignatureInfo(prop) {
@@ -297,7 +333,7 @@ function extractMethodSignatureInfo(m) {
   const method = new APIMethod();
   method.name = m.displayName;
   setDeprecated(method, m);
-  method.returns  = { type: m.returnTypeExcerpt.text };
+  method.returns = { type: m.returnTypeExcerpt.text };
   for (let i = m.returnTypeExcerpt.tokenRange.startIndex; i < m.returnTypeExcerpt.tokenRange.endIndex; i++) {
     if (m.returnTypeExcerpt.tokens[i].kind == "Reference" && m.returnTypeExcerpt.tokens[i].text != "Promise") {
       method.returns.package = m.returnTypeExcerpt.tokens[i].canonicalReference?.source?.escapedPath;
@@ -309,7 +345,7 @@ function extractMethodSignatureInfo(m) {
   for (const p of m.parameters) {
     const isOptional = p.parameterTypeExcerpt.tokens[p.parameterTypeExcerpt.tokenRange.startIndex - 1].text.includes("?");
     const cr = p.parameterTypeExcerpt.tokens[p.parameterTypeExcerpt.tokenRange.startIndex].canonicalReference;
-    const pp : APIParam = { name: p.name, type: p.parameterTypeExcerpt.text, package: cr?.source.escapedPath };
+    const pp: APIParam = { name: p.name, type: p.parameterTypeExcerpt.text, package: cr?.source.escapedPath };
     if (isOptional) pp.isOptional = true;
     if (p.tsdocParamBlock?.content?.nodes)
       pp.comment = getText(p.tsdocParamBlock?.content?.nodes);
@@ -359,7 +395,7 @@ function extractMethodInfo(m) {
   for (const p of m.parameters) {
     const isOptional = p.parameterTypeExcerpt.tokens[p.parameterTypeExcerpt.tokenRange.startIndex - 1].text.includes("?");
     const cr = p.parameterTypeExcerpt.tokens[p.parameterTypeExcerpt.tokenRange.startIndex].canonicalReference;
-    const pp : APIParam = { name: p.name, type: p.parameterTypeExcerpt.text, package: cr?.source.escapedPath };
+    const pp: APIParam = { name: p.name, type: p.parameterTypeExcerpt.text, package: cr?.source.escapedPath };
     if (isOptional) pp.isOptional = true;
     if (p.tsdocParamBlock?.content?.nodes)
       pp.comment = getText(p.tsdocParamBlock?.content?.nodes);
@@ -377,7 +413,7 @@ function extractConstructorInfo(m) {
   for (const p of m.parameters) {
     const isOptional = p.parameterTypeExcerpt.tokens[p.parameterTypeExcerpt.tokenRange.startIndex - 1].text.includes("?");
     const cr = p.parameterTypeExcerpt.tokens[p.parameterTypeExcerpt.tokenRange.startIndex].canonicalReference;
-    const pp : APIParam = { name: p.name, type: p.parameterTypeExcerpt.text, package: cr?.source.escapedPath };
+    const pp: APIParam = { name: p.name, type: p.parameterTypeExcerpt.text, package: cr?.source.escapedPath };
     if (isOptional) pp.isOptional = true;
     if (p.tsdocParamBlock?.content?.nodes)
       pp.comment = getText(p.tsdocParamBlock?.content?.nodes);
@@ -395,8 +431,8 @@ function getFullyQualifiedReference(item) {
     if (token.canonicalReference) {
       cr = token.canonicalReference;
       break;
-    } 
+    }
   }
 
-  if (cr) return { package: cr.source.escapedPath, type: cr.symbol.componentPath.component.text};
+  if (cr) return { package: cr.source.escapedPath, type: cr.symbol.componentPath.component.text };
 }
