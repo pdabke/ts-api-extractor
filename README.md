@@ -1,13 +1,13 @@
 # @nabh/ts-api-extractor
-`ts-api-extractor` is a utility for extracting metadata about the types exported by a Typescript library and creating API documentation. The extracted metadata can be used for a variety of use cases including automated CLI creation, aspect oriented programming and API documentation.
+`ts-api-extractor` is a utility for extracting metadata about the types exported by a Typescript library and creating API documentation. The extracted metadata can be used for a variety of use cases such as automated CLI creation and aspect oriented programming.
 
 ## Alternatives
-`ts-api-extractor` relies on @microsoft/api-documenter, @microsoft/api-extractor, and @microsoft/api-extractor-model for implementing most of the provided functionality. Two key reasons for implementing `ts-api-extractor` package are:
+`ts-api-extractor` relies on @microsoft/api-documenter, @microsoft/api-extractor, and @microsoft/api-extractor-model for implementing most of its functionality. Two key reasons for implementing `ts-api-extractor` package are:
 
-* Metadata objects created by @microsoft/api-extractor package leave some of the metadata properties as "excerptTokens". Details such as parameter types, qualifiers have to be further parsed from the "excerptTokens". `ts-api-extractor` does the parsing for you to create a more fine-grained specification of the API.
-* @microsoft packages are designed around creation of \<your-package\>.api.json files and are not easy to use programmatically. For example, creating documentation via @microsoft/api-documenter requires you to first create the .api.json files all your packages and then invoking the api-documenter tool on the generated files. `ts-api-extractor` combines the two steps in one fileless operation. 
+* Metadata objects created by @microsoft/api-extractor package leave some of the properties as "excerptTokens". Details such as parameter types, qualifiers have to be further parsed from these "excerptTokens". `ts-api-extractor` does the parsing for you to create a more fine-grained specification of the API.
+* @microsoft packages are designed around \<your-package\>.api.json files and are not easy to use programmatically. For example, creating documentation via @microsoft/api-documenter requires you to first create the .api.json files for all your packages and then invoking the api-documenter tool on the generated files. `ts-api-extractor` combines the two steps in one file-less operation. 
 
-You can consider using @microsft/* packages directly if your use case does not require the additional benefits provided by `ts-api-extractor`.
+You can consider using @microsoft/* packages directly if your use case does not require the additional benefits provided by `ts-api-extractor`.
 ## Usage
 Install globally or locally
 ```
