@@ -140,37 +140,42 @@ function createAPIPackage(projectFolder: string, pkgName: string, typeDefPath: s
   return modelGen.buildApiPackage();
 }
 
+function addObjToTypes(obj, types) {
+  // @microsoft/api-extractor renames class names that conflict with 
+  // some symbol in global namespace by appending _2 to it
+  if (obj.name.endsWith("_2")) obj.name = obj.name.substring(0, obj.name.length-2);
+  types[obj.name] = obj;
+}
+
 function translateAPI(apiPackage: ApiPackage): Map<string, APIEntity> {
   const types: Map<string, APIEntity> = new Map<string, APIEntity>();
-  const entryPoint = apiPackage.members[0];
-  let obj = null;
-  for (const apiItem of entryPoint.members) {
-    switch (apiItem.kind) {
-    case ApiItemKind.Class:
-      obj = extractClass(apiItem);
-      obj.kind = "class";
-      types[obj.name] = obj;
-      break;
-    case ApiItemKind.Enum:
-      obj = extractEnum(apiItem);
-      obj.kind = "enum";
-      types[obj.name] = obj;
-      break;
-    case ApiItemKind.Interface:
-      obj = extractInterface(apiItem);
-      obj.kind = "interface";
-      types[obj.name] = obj;
-      break;
-    case ApiItemKind.TypeAlias:
-      obj = extractTypeAlias(apiItem);
-      obj.kind = "type-alias";
-      types[obj.name] = obj;
-      break;
-
+    const entryPoint = apiPackage.members[0];
+    let obj = null;
+    for (const apiItem of entryPoint.members) {
+        switch (apiItem.kind) {
+            case ApiItemKind.Class:
+                obj = extractClass(apiItem);
+                obj.kind = "class";
+                addObjToTypes(obj, types);
+                break;
+            case ApiItemKind.Enum:
+                obj = extractEnum(apiItem);
+                obj.kind = "enum";
+                addObjToTypes(obj, types);
+                break;
+            case ApiItemKind.Interface:
+                obj = extractInterface(apiItem);
+                obj.kind = "interface";
+                addObjToTypes(obj, types);
+                break;
+            case ApiItemKind.TypeAlias:
+                obj = extractTypeAlias(apiItem);
+                obj.kind = "type-alias";
+                addObjToTypes(obj, types);
+                break;
+        }
     }
-  }
-
-  return types;
+    return types;
 }
 
 function extractInterface(item) {

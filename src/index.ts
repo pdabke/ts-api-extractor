@@ -1,6 +1,6 @@
 /**
  * Generates API metadata from Typescript type definitions
- * @remarks Version 1.1.6
+ * @remarks Version 1.2.3
  *
  * @packageDocumentation
  */
