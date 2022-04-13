@@ -8,7 +8,7 @@ Generates API metadata from Typescript type definitions
 
 ## Remarks
 
-Version 1.2.3
+Version 1.2.4
 
 ## Classes
 

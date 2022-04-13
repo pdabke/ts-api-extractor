@@ -108,7 +108,8 @@ function createAPIPackage(projectFolder: string, pkgName: string, typeDefPath: s
   const apiJsonPath = path.resolve(projectFolder, "config", pkgName + ".json");
   const configFile = {
     mainEntryPointFilePath: entryFilePath, projectFolder: projectFolder,
-    compiler: { tsconfigFilePath: tsConfigPath }, docModel: { enabled: true, apiJsonFilePath: apiJsonPath }
+    compiler: { tsconfigFilePath: tsConfigPath }, docModel: { enabled: true, apiJsonFilePath: apiJsonPath },
+    bundledPackages: [pkgName]
   };
   const configOptions = {
     configObject: configFile,

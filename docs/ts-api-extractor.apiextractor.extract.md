@@ -15,7 +15,7 @@ static extract(pkg: string, basePkg?: APIPackage): APIMetadata;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  pkg | string | Name or root directory of the target package |
-|  basePkg | [APIPackage](./ts-api-extractor.apipackage.md) | Used to look up the target package if it is locally installed in the base package |
+|  basePkg | [APIPackage](./ts-api-extractor.apipackage.md) | <i>(Optional)</i> Used to look up the target package if it is locally installed in the base package |
 
 <b>Returns:</b>
 
