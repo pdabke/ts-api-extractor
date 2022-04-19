@@ -6,19 +6,16 @@ const { APIExtractor } = require("../dist/dist-cjs/APIExtractor");
 let outputDir = "docs";
 if (process.argv.length == 2) {
   usage();
-  return;
 }
 
 let start = 2;
 if (process.argv[2] == "--out") {
   if (process.argv.length == 3) {
     usage();
-    return;
   }
   outputDir = process.argv[3];
   if (process.argv.length == 4) {
     usage();
-    return;
   }
   start = 4;
 }

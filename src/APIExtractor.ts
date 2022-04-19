@@ -150,33 +150,33 @@ function addObjToTypes(obj, types) {
 
 function translateAPI(apiPackage: ApiPackage): Map<string, APIEntity> {
   const types: Map<string, APIEntity> = new Map<string, APIEntity>();
-    const entryPoint = apiPackage.members[0];
-    let obj = null;
-    for (const apiItem of entryPoint.members) {
-        switch (apiItem.kind) {
-            case ApiItemKind.Class:
-                obj = extractClass(apiItem);
-                obj.kind = "class";
-                addObjToTypes(obj, types);
-                break;
-            case ApiItemKind.Enum:
-                obj = extractEnum(apiItem);
-                obj.kind = "enum";
-                addObjToTypes(obj, types);
-                break;
-            case ApiItemKind.Interface:
-                obj = extractInterface(apiItem);
-                obj.kind = "interface";
-                addObjToTypes(obj, types);
-                break;
-            case ApiItemKind.TypeAlias:
-                obj = extractTypeAlias(apiItem);
-                obj.kind = "type-alias";
-                addObjToTypes(obj, types);
-                break;
-        }
+  const entryPoint = apiPackage.members[0];
+  let obj = null;
+  for (const apiItem of entryPoint.members) {
+    switch (apiItem.kind) {
+    case ApiItemKind.Class:
+      obj = extractClass(apiItem);
+      obj.kind = "class";
+      addObjToTypes(obj, types);
+      break;
+    case ApiItemKind.Enum:
+      obj = extractEnum(apiItem);
+      obj.kind = "enum";
+      addObjToTypes(obj, types);
+      break;
+    case ApiItemKind.Interface:
+      obj = extractInterface(apiItem);
+      obj.kind = "interface";
+      addObjToTypes(obj, types);
+      break;
+    case ApiItemKind.TypeAlias:
+      obj = extractTypeAlias(apiItem);
+      obj.kind = "type-alias";
+      addObjToTypes(obj, types);
+      break;
     }
-    return types;
+  }
+  return types;
 }
 
 function extractInterface(item) {

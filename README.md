@@ -28,7 +28,7 @@ Invoking the command without any arguments takes the current directory as the pa
 ### Programmatic Usage
 You can also install `ts-api-extractor` locally and use it in your Javascript code.
 ```javascript
-const APIExtractor = require("@nabh/ts-api-extractor");
+const { APIExtractor } = require("@nabh/ts-api-extractor");
 const apiDefs = APIExtractor.extract("test_package");
 
 // Print API metadata object

@@ -162,7 +162,7 @@
   },
   "kind": "Package",
   "canonicalReference": "@nabh/ts-api-extractor!",
-  "docComment": "/**\n * Generates API metadata from Typescript type definitions\n *\n * @remarks\n *\n * Version 1.2.4\n *\n * @packageDocumentation\n */\n",
+  "docComment": "/**\n * Generates API metadata from Typescript type definitions\n *\n * @remarks\n *\n * Version 1.2.6\n *\n * @packageDocumentation\n */\n",
   "name": "@nabh/ts-api-extractor",
   "members": [
     {
